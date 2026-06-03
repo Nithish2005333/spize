@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #2B2B2B;
+}
+
+/* Lenis smooth scrolling compatibility */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8860B;
+}
+
+/* Custom selection */
+::selection {
+  background: #D4AF37;
+  color: #FFFFFF;
+}
+
+/* Custom utility styles */
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+  .bg-gradient-gold {
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light;
+  }
+  .bg-gradient-radial-dark {
+    background: radial-gradient(circle at center, #2C2C2C 0%, #1A1A1A 100%);
+  }
+  .glassmorphism {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  .glassmorphism-light {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20;
+  }
+  .gold-border-glow {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+}
+
+/* Custom premium navigation links style */
+.nav-link-luxury {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 1.25rem;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.nav-link-wrapper {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: 12px;
+}
+
+.nav-link-text,
+.nav-link-text-hover {
+  display: block;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  line-height: 12px;
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+              text-shadow 0.4s ease;
+}
+
+.nav-link-text {
+  color: #1A1A1A; /* Rich Black */
+}
+
+.nav-link-text-hover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  color: #D4AF37; /* Luxury Gold */
+}
+
+/* Hover State */
+.nav-link-luxury:hover .nav-link-text {
+  transform: translateY(-100%);
+}
+
+.nav-link-luxury:hover .nav-link-text-hover {
+  transform: translateY(-100%);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.45);
+}
+
+/* Active State */
+.nav-link-luxury.active .nav-link-text {
+  transform: translateY(-100%);
+}
+
+.nav-link-luxury.active .nav-link-text-hover {
+  transform: translateY(-100%);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+}
+
+/* Beautiful luxury gold underline drawing in from center */
+.nav-link-luxury::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: #D4AF37;
+  box-shadow: 0 0 4px rgba(212, 175, 55, 0.2);
+  transition: width 0.4s cubic-bezier(0.76, 0, 0.24, 1),
+              left 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.nav-link-luxury:hover::after,
+.nav-link-luxury.active::after {
+  width: calc(100% - 2.5rem);
+  left: 1.25rem;
+}
+
+/* Diagonal shimmering effect for custom components */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Force lining numbers for the elegant Cormorant Garamond font throughout the site */
+.font-cormorant {
+  font-variant-numeric: lining-nums !important;
+  font-feature-settings: "lnum" 1 !important;
+}
